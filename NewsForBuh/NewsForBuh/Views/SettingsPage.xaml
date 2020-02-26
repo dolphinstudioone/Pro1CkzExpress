@@ -24,8 +24,8 @@
                            
                     </TableSection>
                     <TableSection Title="Настройки программы">
-                        <SwitchCell Text="New Voice Mail" />
-                        <SwitchCell Text="New Mail" On="true" />
+                        <SwitchCell Text="" />
+                        <SwitchCell Text="" On="true" />
                     </TableSection>
                 </TableRoot>
             </TableView>
