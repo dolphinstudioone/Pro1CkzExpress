@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            
+             mc:Ignorable="d"
+             x:Class="NewsForBuh.Views.SettingsPage">
+    <ContentPage.Content>
+        <StackLayout Margin="10">
+            <TableView Intent="Settings">
+                <TableRoot>
+                    <TableSection Title="Настройки раздела новостей">
+                       
+                        <SwitchCell Text="Отображать просмотренные новости"   On="{Binding ShowViewedNews}" />
+
+                        <ViewCell>
+                            <Picker   x:Name="SelectNewsSection"  SelectedIndexChanged="SelectNewsSection_SelectedIndexChanged"   Title="Категория новостей"   />
+                        </ViewCell>
+                        <ViewCell>
+                            <DatePicker    Date="{Binding DateNewsFilter}"   />
+                        </ViewCell>
+
+                           
+                    </TableSection>
+                    <TableSection Title="Настройки программы">
+                        <SwitchCell Text="New Voice Mail" />
+                        <SwitchCell Text="New Mail" On="true" />
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

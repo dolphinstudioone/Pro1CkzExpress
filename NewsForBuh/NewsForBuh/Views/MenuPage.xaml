@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Style="{DynamicResource ContentPageStyleMenu}"
+             
+             x:Class="NewsForBuh.Views.MenuPage"
+             Title="Меню">
+             
+    <StackLayout VerticalOptions="FillAndExpand" >
+        <ListView x:Name="ListViewMenu"
+                  Style="{DynamicResource listViewStyle}"
+                  HasUnevenRows="True">
+            
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="10">
+                            <Label Style="{DynamicResource labelListViewMenu}" Text="{Binding Title}" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>

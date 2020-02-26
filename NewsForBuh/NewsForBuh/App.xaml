@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             
+             x:Class="NewsForBuh.App">
+
+    <Application.Resources>
+        <ResourceDictionary>
+
+
+            <Style x:Key="ContentPageStyle" TargetType="ContentPage">
+                <Setter Property="BackgroundColor" Value="#263238" />
+            </Style>
+            
+            <Style x:Key="ContentPageStyleMenu" TargetType="ContentPage">
+                <Setter Property="BackgroundColor" Value="#CFD8DC" />
+            </Style>
+            
+            <Style x:Key="MasterDetailPageStyle" TargetType="MasterDetailPage">
+                <Setter Property="BackgroundColor" Value="#546E7A" />
+                
+            </Style>
+            <Style x:Key="imagePage" TargetType="Image">
+                <Setter Property="Source" Value="bgMainPage.png" />
+            </Style>
+
+
+
+            <Style x:Key="searchBar" TargetType="SearchBar">
+                <Setter Property="TextColor"  Value="#CFD8DC"/>
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="Placeholder" Value="..."/>
+                <Setter Property="PlaceholderColor" Value="#B0BEC5"/>
+                <Setter Property="BackgroundColor" Value="#37474F"/>
+                <Setter Property="CancelButtonColor" Value="#37474F"/>
+                <Setter Property="FontFamily" Value="Calibri"/>
+                <Setter Property="WidthRequest" Value="100"/>
+            </Style>
+
+            <Style x:Key="listViewStyle" TargetType="ListView">
+                <Setter Property="RefreshControlColor" Value="#455A64"/>
+                <Setter Property="SeparatorColor" Value="LightSkyBlue"/>
+                <Setter Property="SeparatorVisibility" Value="Default"/>
+            </Style>
+
+            <Style x:Key="labelListViewMenu"  TargetType="Label">
+                <Setter Property="TextColor" Value="#263238"/>
+                <Setter Property="FontSize" Value="Title"/>
+                <Setter Property="FontFamily" Value="Calibri" />
+            </Style>
+
+            <Style x:Key="labelListViewTitle"  TargetType="Label">
+                <Setter Property="TextColor" Value="#ECEFF1"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="FontFamily" Value="Calibri" />
+            </Style>
+            
+            <Style x:Key="labelListViewDate"  TargetType="Label">
+                <Setter Property="TextColor" Value="#607D8B"/>
+                <Setter Property="FontFamily" Value="Calibri" />
+                <Setter Property="FontSize" Value="10"/>
+            </Style>
+            
+            <Style x:Key="BookmarkCheck"  TargetType="BoxView">
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="Color" Value="#ECEFF1"/>
+                <Setter Property ="BackgroundColor" Value="Transparent"/>
+                <Setter Property="WidthRequest" Value="20"/>
+                <Setter Property="HeightRequest" Value="20"/>
+            </Style>
+
+            
+
+
+            <Style x:Key="navigationPage" TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="Transparent" />
+                <Setter Property="BarTextColor" Value="White"/>
+                <Setter Property="BarBackgroundColor" Value="Black"/>
+
+
+            </Style>
+
+            <Style x:Key="buttonStyle" TargetType="Button">
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="BorderColor" Value="White"/>
+                <Setter Property="BorderWidth" Value="1"/>
+                <Setter Property="CornerRadius" Value="5"/>
+                <Setter Property="WidthRequest" Value="300"/>
+                <Setter Property="BackgroundColor" Value="Transparent"   />
+
+
+                <Setter Property="TextColor" Value="White" />
+            </Style>
+
+            <Style x:Key="frameStyle" TargetType="Frame" >
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="BackgroundColor" Value="WhiteSmoke"/>
+                <Setter Property="HasShadow" Value="True"/>
+                <Setter Property="Padding" Value ="10"/>
+                <Setter Property="Opacity" Value="1"/>
+                <Setter Property="BorderColor" Value="Black"/>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+    
+</Application>
