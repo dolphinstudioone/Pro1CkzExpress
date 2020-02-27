@@ -14,20 +14,16 @@ namespace NewsForBuh.ViewModels
         public ObservableCollection<itemNews> Items { get; set; }
         public Command LoadItemsCommand { get; set; }
         public string TextSearch { get; set; }
+
+        private SettingsViewModel settingsView;
         public ItemsViewModel()
         {
 
             Items = new ObservableCollection<itemNews>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
-
-
-            /*MessagingCenter.Subscribe<NewItemPage, itemNews>(this, "AddItem", async (obj, item) =>
-            {
-                var newItem = item as itemNews;
-                Items.Add(newItem);
-
-                await App.Database.SaveNewsAsync(newItem);
-            });*/
+            settingsView = new SettingsViewModel();
+            
+            
         }
 
         async Task ExecuteLoadItemsCommand()
@@ -40,10 +36,13 @@ namespace NewsForBuh.ViewModels
             try
             {
                 Items.Clear();
+
+                
                 var items = await App.Database.GetAllNewsAsync();
                 
                 if (!string.IsNullOrEmpty(TextSearch))
                     items = items.FindAll(i => i.Title.ToLowerInvariant().Contains(TextSearch));
+
                 
                 foreach (var item in items)
                 {

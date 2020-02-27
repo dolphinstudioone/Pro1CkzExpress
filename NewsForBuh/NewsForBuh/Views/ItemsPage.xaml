@@ -33,6 +33,7 @@
                         <StackLayout  Padding="5,5,15,5" >
                             <Grid>
                                 <Grid.RowDefinitions>
+                                   
                                     <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
@@ -62,12 +63,8 @@
                                             Style="{DynamicResource labelListViewDate}"/>
                                     </StackLayout>
                                 </StackLayout>
-                                <StackLayout Grid.Row="0" Grid.Column="1" VerticalOptions="CenterAndExpand">
-
-
+                                <StackLayout  Grid.Row="0" Grid.Column="1" VerticalOptions="CenterAndExpand">
                                     <Switch IsToggled="{Binding Bookmark}" Toggled="Switch_Toggled"  OnColor="#FFD600" ThumbColor="White" />
-
-
                                 </StackLayout>
                                  
 
