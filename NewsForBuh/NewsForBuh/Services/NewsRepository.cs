@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using NewsForBuh.Models;
 using SQLite;
@@ -21,8 +18,6 @@ namespace NewsForBuh.Services
         
         }
 
-
-
         //метод возвращает список новостей
         public Task<List<itemNews>> GetAllNewsAsync()
         {
@@ -35,10 +30,14 @@ namespace NewsForBuh.Services
             return database.Table<itemNews>().Where(i => i.Bookmark == true).ToListAsync();
         }
 
-        //метод возвращает список новостей для поиска , содержащий символы в Title
-        public Task<List<itemNews>> GetNewsForSearchAsync(string textSearch)
+        //метод возвращает список новостей по заданным параметрам настроек
+        public Task<List<itemNews>> GetNewsWithArgsAsync(string NewsSection)
         {
-            return database.Table<itemNews>().Where(f => f.Title.ToLower().Contains(textSearch)).ToListAsync();
+            
+            if (NewsSection == "Все разделы")
+               return database.Table<itemNews>().OrderByDescending(u => u.Date).ToListAsync();
+            else
+               return database.Table<itemNews>().Where(s => s.SectionNews == NewsSection).OrderByDescending(u => u.Date).ToListAsync();
         }
 
         //метод возращает новость

@@ -20,6 +20,7 @@ namespace NewsForBuh.Views
         {
             InitializeComponent();
             BindingContext = viewModel = new ItemsViewModel();
+            Date.Text = new SettingsViewModel().DateNewsFilter.ToString();
             Title = "Новости";
             
         }
@@ -29,7 +30,7 @@ namespace NewsForBuh.Views
             itemNews item = args.SelectedItem as itemNews;
             if (item == null)  return;
 
-            Uri url = new Uri("http://pro1c.kz/" + item.Link);
+            Uri url = new Uri("http://pro1c.kz" + item.Link);
             Device.OpenUri(url);
             item.Read = true;
            
@@ -46,15 +47,14 @@ namespace NewsForBuh.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
-            if (viewModel.Items.Count == 0)
-                viewModel.LoadItemsCommand.Execute(null);
+            viewModel.LoadItemsCommand.Execute(null);
         }
 
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
                 viewModel.TextSearch = e.NewTextValue;
                 viewModel.LoadItemsCommand.Execute(null);
+             
         }
 
         async private void Switch_Toggled(object sender, ToggledEventArgs e)

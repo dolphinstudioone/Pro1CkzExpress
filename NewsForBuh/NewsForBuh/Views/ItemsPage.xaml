@@ -15,6 +15,7 @@
     </NavigationPage.TitleView>
     
     <StackLayout  Padding="10"    >
+        <Label x:Name="Date"></Label>
         <ListView x:Name="ItemsListView"
                 Style="{DynamicResource listViewStyle}"
                 ItemsSource="{Binding Items}"
@@ -43,7 +44,7 @@
                                 </Grid.ColumnDefinitions>
                                 <StackLayout  Grid.Row="0" Grid.Column="0" >
                                     <Label 
-                                        x:Name="LabelTitle"
+                                       
                                         Text="{Binding Title}" 
                                         Style="{DynamicResource labelListViewTitle}" />
                                     <StackLayout Orientation="Horizontal">
@@ -51,15 +52,22 @@
                                             Text="Дата: " 
                                             Style="{DynamicResource labelListViewDate}"/>                                               
                                         <Label
-                                            x:Name="LabelDate"
+                                            
                                             Text="{Binding Date}"       
                                             Style="{DynamicResource labelListViewDate}"/>
                                         <Label 
                                             Text="   Просмотров : " 
                                             Style="{DynamicResource labelListViewDate}"/>
                                         <Label
-                                            x:Name="LabelViews"
+                                            
                                             Text="{Binding Views}"       
+                                            Style="{DynamicResource labelListViewDate}"/>
+                                        <Label 
+                                            Text="   Раздел : " 
+                                            Style="{DynamicResource labelListViewDate}"/>
+                                        <Label
+                                            
+                                            Text="{Binding SectionNews}"       
                                             Style="{DynamicResource labelListViewDate}"/>
                                     </StackLayout>
                                 </StackLayout>

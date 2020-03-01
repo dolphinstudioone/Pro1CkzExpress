@@ -9,11 +9,12 @@ namespace NewsForBuh.Services
 {
     public class ParserNews
     {
+        
          async public void ParseDataSite()
         {
 
             var config = Configuration.Default.WithDefaultLoader();
-            var address = "https://pro1c.kz/news/zakonodatelstvo/";
+            var address = "https://pro1c.kz/news/";
             var context = BrowsingContext.New(config);
             var document = await context.OpenAsync(address);
             var idblock = document.QuerySelectorAll("[id*='bx_6']");
@@ -27,13 +28,17 @@ namespace NewsForBuh.Services
                 itemNews newsOne = new itemNews
                 {
                     Idbx = el.GetAttribute("id").ToString(),
-                    Date = el.QuerySelector("small").TextContent ,
+                    Date = DateTime.ParseExact( el.QuerySelector("small").TextContent.Replace(".","") , "ddMyyyy", null),
                     Link = el.QuerySelector("h3.news_title > a").GetAttribute("href").ToString(),
                     Title = el.QuerySelector("h3.news_title").TextContent.ToString(),
                     Views = Convert.ToInt32(el.QuerySelector("li > a").TextContent.ToString()),
                     Read = false,
                     Bookmark = false
+                    
+
                 };
+                newsOne.SectionNews = Helpers.HelperCreateItemNews.SectionNewsFromURL(newsOne.Link);
+                
 
                 var searchNews = new itemNews();
                 searchNews = await App.Database.ReturnFindItemNews(newsOne);

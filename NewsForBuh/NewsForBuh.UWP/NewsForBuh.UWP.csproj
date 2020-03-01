@@ -9,8 +9,8 @@
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>NewsForBuh.UWP</RootNamespace>
-    <AssemblyName>NewsForBuh.UWP</AssemblyName>
-    <DefaultLanguage>en-US</DefaultLanguage>
+    <AssemblyName>Pro1C Express</AssemblyName>
+    <DefaultLanguage>ru-RU</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.16299.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>

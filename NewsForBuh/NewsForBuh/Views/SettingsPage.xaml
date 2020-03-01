@@ -24,7 +24,7 @@
                         <ViewCell>
                             <StackLayout  Margin="2" Orientation="Horizontal" HorizontalOptions="Start" >
                                 <Label Text="Дата от которой показывать новости "/>
-                                <DatePicker    Date="{Binding DateNewsFilter}"   />
+                                <DatePicker    Date="{Binding DateNewsFilter}"     />
                             </StackLayout>
                         </ViewCell>
 

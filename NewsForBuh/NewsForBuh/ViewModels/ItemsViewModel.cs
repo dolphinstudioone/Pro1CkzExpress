@@ -18,12 +18,9 @@ namespace NewsForBuh.ViewModels
         private SettingsViewModel settingsView;
         public ItemsViewModel()
         {
-
             Items = new ObservableCollection<itemNews>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
             settingsView = new SettingsViewModel();
-            
-            
         }
 
         async Task ExecuteLoadItemsCommand()
@@ -36,17 +33,22 @@ namespace NewsForBuh.ViewModels
             try
             {
                 Items.Clear();
+                var items = await App.Database.GetNewsWithArgsAsync(settingsView.NewsSection);
 
-                
-                var items = await App.Database.GetAllNewsAsync();
-                
+
+                items = items.Where(d => d.Date >= settingsView.DateNewsFilter).ToList();
+
                 if (!string.IsNullOrEmpty(TextSearch))
                     items = items.FindAll(i => i.Title.ToLowerInvariant().Contains(TextSearch));
-
                 
                 foreach (var item in items)
                 {
+                    //if (Convert.ToDateTime(item.Date) >= settingsView.DateNewsFilter) 
+                    //{ 
                     Items.Add(item);
+                    //}
+
+                    
                 }              
             }
             catch (Exception ex)

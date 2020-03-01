@@ -30,6 +30,7 @@ namespace NewsForBuh.Views
         private void SelectNewsSection_SelectedIndexChanged(object sender, EventArgs e)
         {
             viewModel.NewsSection = SelectNewsSection.Items[SelectNewsSection.SelectedIndex];
+            
         }
     }
 }

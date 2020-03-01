@@ -9,11 +9,13 @@ namespace NewsForBuh.Models
         all,
         avtomatizatsiya,
         zakonodatelstvo
-
     }
+
     public class NewsSection
     {
         public SectionNewsType Id { get; set; }
-        public string NameSectionNews { get; set; }
+        public string Name { get; set; }       
     }
+
+
 }

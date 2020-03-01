@@ -12,7 +12,7 @@ namespace NewsForBuh
     public partial class App : Application
     {
         
-        public const string DATABASE_NAME = "newsforbuh2.db";
+        public const string DATABASE_NAME = "newsforbuh4.db";
         public static NewsRepository database;
         public static NewsRepository Database
         {
@@ -40,7 +40,7 @@ namespace NewsForBuh
                         default:
                             database = new NewsRepository(
                                 Path.Combine(Environment.GetFolderPath(
-                                    Environment.SpecialFolder.LocalApplicationData), DATABASE_NAME)); ;
+                                    Environment.SpecialFolder.LocalApplicationData), DATABASE_NAME)); 
                             break;
                     }                   
                 }
@@ -55,7 +55,7 @@ namespace NewsForBuh
         { 
             InitializeComponent();
             ParserNews parserNews = new ParserNews();
-            parserNews.ParseDataSite();
+           parserNews.ParseDataSite();
             
             MainPage = new MainPage();
             

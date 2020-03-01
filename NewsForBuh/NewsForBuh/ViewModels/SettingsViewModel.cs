@@ -16,16 +16,12 @@ namespace NewsForBuh.ViewModels
                 OnPropertyChanged(nameof(ShowViewedNews));
             }
         }
-        public List<string> ListSection = new List<string> 
-        {
-            "Все разделы",
-            "Законодательство",
-            "Автоматизация"
-        };
+        
+        
         
         public string NewsSection
         {
-            get => Preferences.Get(nameof(NewsSection), ListSection[1]);
+            get => Preferences.Get(nameof(NewsSection), ListSection[0]);
          
             set
             {
@@ -45,12 +41,16 @@ namespace NewsForBuh.ViewModels
             }
         }
 
+        public List<string> ListSection { get; set; }
 
         public SettingsViewModel()
         {
-            
-           
-
+            ListSection = new List<string>
+                {
+                   "Все разделы" ,
+                   "Законодательство",
+                   "Автоматизация"
+                }; 
         }    
         
     }
