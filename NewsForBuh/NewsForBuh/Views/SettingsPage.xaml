@@ -3,36 +3,66 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-            
+             Style="{DynamicResource ContentPageStyle}"
              mc:Ignorable="d"
              x:Class="NewsForBuh.Views.SettingsPage">
+    
     <ContentPage.Content>
-        <StackLayout Margin="10" Orientation="Horizontal" HorizontalOptions="Center">
+        <StackLayout Margin="10" Orientation="Horizontal" HorizontalOptions="Start">
             <TableView Intent="Settings">
-                <TableRoot Title="Настройки" >
-                   
-                    <TableSection Title="Настройки раздела новостей"  >
-                       
-                        <SwitchCell Text="Отображать просмотренные новости"    On="{Binding ShowViewedNews}" />
-                        
-                        <ViewCell>
-                            <StackLayout Margin="2" Orientation="Horizontal" HorizontalOptions="Start">
-                                <Label Text="Категория отображаемых новостей "/>
-                                <Picker   x:Name="SelectNewsSection"  SelectedIndexChanged="SelectNewsSection_SelectedIndexChanged"    />
-                            </StackLayout>
-                        </ViewCell>
-                        <ViewCell>
-                            <StackLayout  Margin="2" Orientation="Horizontal" HorizontalOptions="Start" >
-                                <Label Text="Дата от которой показывать новости "/>
-                                <DatePicker    Date="{Binding DateNewsFilter}"     />
+                <TableRoot  >
+                    <TableSection Title="Настройки раздела новостей" TextColor="White" >
+                        <ViewCell >
+                            <StackLayout Margin="10" 
+                                         Orientation="Horizontal" 
+                                         HorizontalOptions="Start" 
+                                         VerticalOptions="Center">
+                                <Label  
+                                    Style="{DynamicResource labelListViewTitle} " 
+                                    VerticalOptions="Center"
+                                    Text="Скрывать просмотренные "/>
+                                <Switch 
+                                    IsToggled="{Binding ShowViewedNews}"
+                                    BackgroundColor="Transparent"
+                                    OnColor="BlanchedAlmond"
+                                    ThumbColor="Gray"/>
                             </StackLayout>
                         </ViewCell>
 
-                           
-                    </TableSection>
-                    <TableSection Title="Настройки программы">
-                        <SwitchCell Text="" />
-                        <SwitchCell Text="" On="true" />
+                        <ViewCell >
+                            <StackLayout Margin="10" 
+                                         Orientation="Horizontal" 
+                                         HorizontalOptions="Start" 
+                                         VerticalOptions="Center">
+                                <Label  
+                                    Style="{DynamicResource labelListViewTitle}" 
+                                    VerticalOptions="Center"
+                                    Text="Категория отображаемых новостей "/>
+                                <Picker   
+                                    x:Name="SelectNewsSection" 
+                                    HorizontalOptions="Center"
+                                    SelectedIndexChanged="SelectNewsSection_SelectedIndexChanged" 
+                                    TextColor="White" 
+                                    BackgroundColor="Transparent"   />
+                            </StackLayout>
+                        </ViewCell>
+
+                        <ViewCell>
+                            <StackLayout  Margin="10" 
+                                          Orientation="Horizontal" 
+                                          HorizontalOptions="Start" 
+                                          VerticalOptions="Center" >
+                                <Label 
+                                    Style="{DynamicResource labelListViewTitle}"
+                                    VerticalOptions="Center"
+                                    Text="Дата от которой показывать новости "/>
+                                <DatePicker    
+                                    Date="{Binding DateNewsFilter}" 
+                                    HorizontalOptions="Center"
+                                    BackgroundColor="Transparent"  
+                                    TextColor="White"    />
+                            </StackLayout>
+                        </ViewCell>
                     </TableSection>
                 </TableRoot>
             </TableView>

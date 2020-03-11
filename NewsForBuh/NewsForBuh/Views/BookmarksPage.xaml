@@ -4,12 +4,101 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="NewsForBuh.Views.BookmarksPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+             x:Class="NewsForBuh.Views.BookmarksPage"
+             Style="{DynamicResource ContentPageStyle}"
+             Title="{Binding Title}">
+    
+    <NavigationPage.TitleView>
+        <SearchBar Style="{DynamicResource searchBar}" TextChanged="SearchBar_TextChanged" ></SearchBar>
+    </NavigationPage.TitleView>
+
+
+
+    <StackLayout  Padding="10"    >
+
+
+        <ListView x:Name="ItemsListView"
+                Style="{DynamicResource listViewStyle}"
+                ItemsSource="{Binding Items}"
+                VerticalOptions="FillAndExpand"
+                HasUnevenRows="true"
+                RefreshCommand="{Binding LoadItemsCommand}"
+                IsPullToRefreshEnabled="true"
+                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                CachingStrategy="RecycleElement"
+                ItemSelected="OnItemSelected"    >
+
+            <ListView.ItemTemplate>
+                <DataTemplate    >
+                    <ViewCell   >
+
+
+                        <Frame CornerRadius="5" BackgroundColor="Transparent"     Margin="3" Padding="2" HasShadow="True">
+                            <Grid RowSpacing="2" ColumnSpacing="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"  />
+                                    <ColumnDefinition Width="15*" />
+                                    <ColumnDefinition Width="1*" />
+                                </Grid.ColumnDefinitions>
+
+                                <CheckBox Grid.Row="0" 
+                                                  Grid.Column="0" 
+                                                  IsChecked="{Binding Read}" 
+                                                  CheckedChanged="CheckBox_CheckedChanged"  
+                                                  BackgroundColor="Transparent"  
+                                                  Color="Transparent"  />
+
+                                <Label 
+                                            Grid.Row="0" Grid.Column="1" 
+                                            Text="{Binding Title}" 
+                                            Style="{DynamicResource labelListViewTitle}" />
+
+                                <StackLayout Orientation="Horizontal"   Grid.Row="1" Grid.Column="1">
+                                    <Label 
+                                                Text="Дата: " 
+                                                Style="{DynamicResource labelListViewDate}"/>
+                                    <Label
+                                            
+                                                Text="{Binding Date}"       
+                                                Style="{DynamicResource labelListViewDate}"/>
+                                    <Label 
+                                                Text="   Просмотров : " 
+                                                Style="{DynamicResource labelListViewDate}"/>
+                                    <Label
+                                            
+                                                Text="{Binding Views}"       
+                                                Style="{DynamicResource labelListViewDate}"/>
+                                    <Label 
+                                                Text="   Раздел : " 
+                                                Style="{DynamicResource labelListViewDate}"/>
+                                    <Label
+                                            
+                                                Text="{Binding SectionNews}"       
+                                                Style="{DynamicResource labelListViewDate}"/>
+                                </StackLayout>
+
+                                <CheckBox 
+                                    Grid.Row="0" 
+                                    Grid.Column="2" 
+                                    IsChecked="{Binding Bookmark}"  
+                                    CheckedChanged="CheckBox_CheckedChanged" 
+                                    BackgroundColor="Transparent"  Color="White" 
+                                    FlexLayout.Shrink="20" />
+
+
+                            </Grid>
+
+                        </Frame >
+
+
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
 </ContentPage>

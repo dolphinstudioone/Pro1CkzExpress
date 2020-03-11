@@ -12,7 +12,7 @@ namespace NewsForBuh
     public partial class App : Application
     {
         
-        public const string DATABASE_NAME = "newsforbuh4.db";
+        public const string DATABASE_NAME = "newsforbuh5.db";
         public static NewsRepository database;
         public static NewsRepository Database
         {

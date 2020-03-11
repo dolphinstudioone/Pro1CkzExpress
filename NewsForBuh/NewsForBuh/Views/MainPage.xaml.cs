@@ -33,6 +33,9 @@ namespace NewsForBuh.Views
                     case (int)MenuItemType.News:
                         MenuPages.Add(id, new NavigationPage(new ItemsPage()));
                         break;
+                    case (int)MenuItemType.Bookmarks:
+                        MenuPages.Add(id, new NavigationPage(new BookmarksPage()));
+                        break;
                     case (int)MenuItemType.Settings:
                         MenuPages.Add(id, new NavigationPage(new SettingsPage()));
                         break;

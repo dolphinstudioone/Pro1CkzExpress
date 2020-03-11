@@ -20,7 +20,7 @@ namespace NewsForBuh.Views
         {
             InitializeComponent();
             BindingContext = viewModel = new ItemsViewModel();
-            Date.Text = new SettingsViewModel().DateNewsFilter.ToString();
+            
             Title = "Новости";
             
         }
@@ -39,10 +39,10 @@ namespace NewsForBuh.Views
             
         }
 
-        async void AddItem_Clicked(object sender, EventArgs e)
+        /*async void AddItem_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
-        }
+        }*/
 
         protected override void OnAppearing()
         {
@@ -57,11 +57,18 @@ namespace NewsForBuh.Views
              
         }
 
-        async private void Switch_Toggled(object sender, ToggledEventArgs e)
+        /*async private void Switch_Toggled(object sender, ToggledEventArgs e)
         {
             itemNews item = ((Switch)sender).BindingContext as itemNews;
             await App.Database.UpdateNewsAsync(item);
             
+        }*/
+
+        async private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            itemNews item = ((CheckBox)sender).BindingContext as itemNews;
+            await App.Database.UpdateNewsAsync(item);
+           
         }
     }
 }

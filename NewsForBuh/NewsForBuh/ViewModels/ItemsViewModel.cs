@@ -13,6 +13,7 @@ namespace NewsForBuh.ViewModels
     {
         public ObservableCollection<itemNews> Items { get; set; }
         public Command LoadItemsCommand { get; set; }
+        public Command LoadBookmarksCommand { get; set; }
         public string TextSearch { get; set; }
 
         private SettingsViewModel settingsView;
@@ -20,6 +21,7 @@ namespace NewsForBuh.ViewModels
         {
             Items = new ObservableCollection<itemNews>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
+            LoadBookmarksCommand = new Command(async () => await ExecuteLoadBookmarksCommand());
             settingsView = new SettingsViewModel();
         }
 
@@ -35,20 +37,17 @@ namespace NewsForBuh.ViewModels
                 Items.Clear();
                 var items = await App.Database.GetNewsWithArgsAsync(settingsView.NewsSection);
 
-
                 items = items.Where(d => d.Date >= settingsView.DateNewsFilter).ToList();
 
                 if (!string.IsNullOrEmpty(TextSearch))
                     items = items.FindAll(i => i.Title.ToLowerInvariant().Contains(TextSearch));
-                
+
+                if (settingsView.ShowViewedNews)
+                    items = items.Where(r => r.Read == false).ToList();
+
                 foreach (var item in items)
                 {
-                    //if (Convert.ToDateTime(item.Date) >= settingsView.DateNewsFilter) 
-                    //{ 
-                    Items.Add(item);
-                    //}
-
-                    
+                    Items.Add(item);   
                 }              
             }
             catch (Exception ex)
@@ -61,7 +60,37 @@ namespace NewsForBuh.ViewModels
             }
         }
 
-        
+    
+
+        async Task ExecuteLoadBookmarksCommand()
+        {
+            if (IsBusy)
+                return;
+
+            IsBusy = true;
+
+            try
+            {
+                Items.Clear();
+                var items = await App.Database.GetBookmarksNewsAsync();
+
+                if (!string.IsNullOrEmpty(TextSearch))
+                    items = items.FindAll(i => i.Title.ToLowerInvariant().Contains(TextSearch));
+
+                foreach (var item in items)
+                {
+                    Items.Add(item);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
 
     }
 }
